@@ -1,9 +1,14 @@
 package fr.wildcodeschool.winners;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,12 +26,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+    private ImageView profil;
+    long animationDuration =1000;
+    int t =5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       //Button button = findViewById(R.id.bu)
+
+        profil =findViewById(R.id.imageView_superheros);
+
+
         //String url = "https://api.openweathermap.org/data/2.5/weather?q=Toulouse&appid=" + API_KEY;
         // Crée une file d'attente pour les requêtes vers l'API
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -34,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         // TODO : URL de la requête vers l'API
         String url = "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json";
 
-
+        final ListView listView =findViewById(R.id.listVieww);
+        final ArrayList<Model> test = new ArrayList<>();
         // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
@@ -45,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
                         try {
 
                             //djfhehf
-                                                       TextView tvname = findViewById(R.id.textView_name);
+                            TextView tvname = findViewById(R.id.textView_name);
                             TextView tvattaque = findViewById(R.id.textView_str);
                             TextView tvSpd = findViewById(R.id.textView_spd);
                             TextView tvvie = findViewById(R.id.textView_vie);
-                            ImageView profil =findViewById(R.id.imageView_superheros);
+                            profil =findViewById(R.id.imageView_superheros);
 
-                            JSONObject name10= (JSONObject) response.get(10);
+                            JSONObject name10= (JSONObject) response.get(t);
                             String names10 = name10.getString("name");
                             tvname.setText(names10);
 
@@ -69,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject img = name10.getJSONObject("images");
                             String imgprofil =img.getString("sm");
                             Glide.with(MainActivity.this).load(imgprofil).into(profil);
+
+
+
+                            test.add(new Model(names10));
+
+                            Adapter adapter = new Adapter(MainActivity.this, test);
+                            listView.setAdapter(adapter);
+
 
 
 
@@ -92,4 +116,14 @@ public class MainActivity extends AppCompatActivity {
         // On ajoute la requête à la file d'attente
         requestQueue.add(jsonArrayRequest);
     }
+/**
+    public void handleHandAnimation (View view ){
+        ObjectAnimator animator =ObjectAnimator.ofFloat(profil,"x",420f);
+        ObjectAnimator animator =ObjectAnimator.ofFloat(profil,"y",200f);
+        animator.setDuration(animationDuration);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(animator);
+        animatorSet.start();
+    } */
+
 }
