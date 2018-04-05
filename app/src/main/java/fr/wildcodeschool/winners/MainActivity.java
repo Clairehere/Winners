@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    private final static String API_KEY = "remplace cette valeur par ta clé API";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO : URL de la requête vers l'API
         String url = "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json";
-
-
-
 
 
         // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
