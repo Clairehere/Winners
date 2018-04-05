@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         try {
 
+                            //djfhehf
                                                        TextView tvname = findViewById(R.id.textView_name);
                             TextView tvattaque = findViewById(R.id.textView_str);
                             TextView tvSpd = findViewById(R.id.textView_spd);
