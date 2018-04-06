@@ -1,10 +1,6 @@
 package fr.wildcodeschool.winners;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +11,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by wilder on 05/04/18.
@@ -37,7 +32,7 @@ public class Adapter extends ArrayAdapter<Model> {
         TextView name= convertView.findViewById(R.id.textView_test);
         name.setText(trip.getName());
 
-        TextView life= convertView.findViewById(R.id.textView_vie);
+        TextView life= convertView.findViewById(R.id.textView_vieG);
         life.setText(String.valueOf(trip.getLife()));
 
         TextView speed =convertView.findViewById(R.id.textView_vitesse);
