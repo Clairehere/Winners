@@ -45,21 +45,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         final Intent intent = new Intent(MainActivity.this, Combat.class);
+        final Intent intent2= new Intent(MainActivity.this, Combat.class);
 
-        //String url = "https://api.openweathermap.org/data/2.5/weather?q=Toulouse&appid=" + API_KEY;
-        // Crée une file d'attente pour les requêtes vers l'API
+        //API
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-        // TODO : URL de la requête vers l'API
         String url = "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json";
 
-
-
-
-
+        //recup API dans GridView
         final GridView listView =findViewById(R.id.gridView);
-                final ArrayList<Model> test = new ArrayList<>();
-        // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
+        final ArrayList<Model> test = new ArrayList<>();
+
+        // Recup API
         final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -68,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         try {
 
-                            //djfhehf
                             TextView tvname = findViewById(R.id.textView_nameG);
                             TextView tvattaque = findViewById(R.id.textView_strG);
                             TextView tvSpd = findViewById(R.id.textView_spdG);
@@ -79,15 +74,12 @@ public class MainActivity extends AppCompatActivity {
                                 final String names10 = name10.getString("name");
                                 tvname.setText(names10);
 
-
                                 JSONObject stat = name10.getJSONObject("powerstats");
-                                int attaque = stat.getInt("strength");
+                                final int attaque = stat.getInt("strength");
                                 tvattaque.setText(String.valueOf(attaque));
-
                                 final int speed = stat.getInt("speed");
                                 tvSpd.setText(String.valueOf(speed));
-
-                                int vie = stat.getInt("durability");
+                                final int vie = stat.getInt("durability");
                                 tvvie.setText(String.valueOf(vie));
 
                                 JSONObject img = name10.getJSONObject("images");
@@ -100,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
                                 Adapter adapter = new Adapter(MainActivity.this, test);
                                 listView.setAdapter(adapter);
 
-                                Model troisEnUn = new Model(names10, vie, speed, attaque,imgprofil);
+                                //Envoit Intent
+                                final Model troisEnUn = new Model(names10, vie, speed, attaque,imgprofil);
                                 intent.putExtra("troisEnUn", troisEnUn);
 
 
@@ -108,11 +101,12 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                                        //anim image
                                         ImageView zoom = findViewById(R.id.imageView_superherosG);
                                         Animation zoomAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
                                         zoom.startAnimation(zoomAnimation);
 
-                                        //anim
+                                        //anim nom
                                         TextView zoom1= findViewById(R.id.textView_nameG);
                                         Animation zoomAnimation1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
                                         zoom1.startAnimation(zoomAnimation1);
@@ -135,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                                        TextView speedG = findViewById(R.id.textView_spdG);
                                        speedG.setText(String.valueOf(currentMonster.getSpeed()));
 
-                                       // 3 heros
+                                       // 3 heros images
                                         ImageButton button1 = findViewById(R.id.imageButton);
                                         button1.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -153,6 +147,10 @@ public class MainActivity extends AppCompatActivity {
                                                         ObjectAnimator.ofFloat(hero1,"translationY",20,0).setDuration(200).start();
                                                     }
                                                 }, SPLASH_TIME_OUT);
+
+
+                                                Model un = new Model(names10, vie, speed, attaque,imgprofil);
+                                                intent2.putExtra("un", un);
 
                                             }
                                         });
