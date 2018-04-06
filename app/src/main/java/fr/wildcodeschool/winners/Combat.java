@@ -1,8 +1,11 @@
 package fr.wildcodeschool.winners;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 
 import com.bumptech.glide.Glide;
 
@@ -25,14 +28,16 @@ public class Combat extends AppCompatActivity {
         ImageView quatre = findViewById(R.id.imageView3);
         ImageView cinq = findViewById(R.id.imageView2);
         ImageView six = findViewById(R.id.imageView4);
-
+/*
         Model troisEnUnValue = getIntent().getExtras().getParcelable("troisEnUn");
         Glide.with(Combat.this).load(troisEnUnValue.getImage()).into(un);
         Glide.with(Combat.this).load(troisEnUnValue.getImage()).into(deux);
 
-
-
-
+        Intent intent= getIntent();
+        String name1= intent.getStringExtra("name1");
+        TextView name = findViewById(R.id.textView_name1);
+        name.setText(name1);
+*/
     }
 
 

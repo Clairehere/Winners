@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
@@ -48,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO : URL de la requête vers l'API
         String url = "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json";
+
+
+
+
 
         final GridView listView =findViewById(R.id.gridView);
                 final ArrayList<Model> test = new ArrayList<>();
@@ -100,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                                        ImageView zoom = findViewById(R.id.imageView_superherosG);
+                                        Animation zoomAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
+                                        zoom.startAnimation(zoomAnimation);
+
+                                        TextView zoom1= findViewById(R.id.textView_nameG);
+                                        Animation zoomAnimation1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
+                                        zoom1.startAnimation(zoomAnimation1);
+
                                         final Model currentMonster = test.get(position);
                                         TextView nameG =findViewById(R.id.textView_nameG);
                                         nameG.setText(currentMonster.getName());
@@ -123,6 +137,11 @@ public class MainActivity extends AppCompatActivity {
                                             public void onClick(View v) {
                                                 ImageView hero1 = findViewById(R.id.imageView_photohero1);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero1);
+
+                                                Intent intentHeros1 = new Intent(MainActivity.this, Combat.class);
+
+                                                String names = currentMonster.getName().toString();
+                                               intentHeros1.putExtra("name1", names);
 
                                             }
                                         });
@@ -178,6 +197,8 @@ public class MainActivity extends AppCompatActivity {
 
         // On ajoute la requête à la file d'attente
         requestQueue.add(jsonArrayRequest);
+
+
 
         Button button =findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
