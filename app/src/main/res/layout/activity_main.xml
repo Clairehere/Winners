@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pap"
+    android:background="@drawable/arene"
     tools:context="fr.wildcodeschool.winners.MainActivity"
     >
 
@@ -51,7 +51,7 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="8dp"
         android:text="Name"
-        android:textColor="@android:color/black"
+        android:textColor="#EBA169"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="stats degat"
-            android:textColor="@android:color/black"
+            android:textColor="#EBA169"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_hero2"
@@ -86,7 +86,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="stats speed"
-            android:textColor="@android:color/black"
+            android:textColor="#EBA169"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_hero3"
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="stat vie"
-            android:textColor="@android:color/black"
+            android:textColor="#EBA169"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_hero1"
@@ -150,7 +150,6 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="176dp"
-        android:background="@drawable/arene"
         android:orientation="vertical">
 
         <GridView
@@ -212,8 +211,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="176dp"
         android:text="Choisis tes trois Héros"
-        android:textColor="@android:color/background_dark"
-        android:textSize="24dp"
+        android:textColor="#E99556"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
