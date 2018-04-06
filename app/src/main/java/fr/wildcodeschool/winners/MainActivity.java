@@ -36,6 +36,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT=100;
+    private Model hero1,hero2,hero3, hero4,hero5,hero6 =null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent intent = new Intent(MainActivity.this, Combat.class);
         final Intent intent2= new Intent(MainActivity.this, Combat.class);
+
 
         //API
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -104,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
                                         Model un = new Model(names10, vie, speed, attaque,imgprofil);
                                         Model test2 = test.get(position);
                                         intent2.putExtra("data", test2);
-                                        intent2.putExtra("data2", un);
+
+
                                         //anim image
                                         ImageView zoom = findViewById(R.id.imageView_superherosG);
                                         Animation zoomAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
@@ -118,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                         final Model currentMonster = test.get(position);
+                                        final Model currentMonsterdeux = test.get(position+50);
                                         TextView nameG =findViewById(R.id.textView_nameG);
                                         nameG.setText(currentMonster.getName());
 
@@ -138,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
                                         button1.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+
+                                                hero1=currentMonster;
+                                                hero4=currentMonsterdeux;
+
                                                 final ImageView hero1 = findViewById(R.id.imageView_photohero1);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero1);
 
@@ -163,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
                                         button2.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+                                                hero2 =currentMonster;
+                                                hero5=currentMonsterdeux;
                                                 final ImageView hero2 = findViewById(R.id.imageView_photohero2);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero2);
 
@@ -184,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
                                         button3.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+                                                hero3 =currentMonster;
+                                                hero6=currentMonsterdeux;
                                                 final ImageView hero3 = findViewById(R.id.imageViewphotohero3);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero3);
 
@@ -239,7 +252,17 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent2);
+
+                if (hero1 !=null && hero2 !=null && hero3 !=null){
+                    intent2.putExtra("hero1",hero1);
+                    intent2.putExtra("hero2",hero2);
+                    intent2.putExtra("hero3",hero3);
+                    intent2.putExtra("hero4",hero4);
+                    intent2.putExtra("hero5",hero5);
+                    intent2.putExtra("hero6",hero6);
+                    startActivity(intent2);
+                }
+
             }
 
         });
