@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
 
 public class Combat extends AppCompatActivity {
     private ImageView gif1,gif2, gif3, gif4, gif5, gif6;
+
+    public Model model1, model2;
 
 
 
@@ -65,8 +68,8 @@ public class Combat extends AppCompatActivity {
 
 
         Intent intent= getIntent();
-        final Model model1= getIntent().getParcelableExtra("hero1");
-        final Model model2= getIntent().getParcelableExtra("hero2");
+         model1= getIntent().getParcelableExtra("hero1");
+         model2= getIntent().getParcelableExtra("hero2");
         Model model3= getIntent().getParcelableExtra("hero3");
         final Model model4=getIntent().getParcelableExtra("hero4");
         Model model5= getIntent().getParcelableExtra("hero5");
@@ -92,8 +95,8 @@ public class Combat extends AppCompatActivity {
         troisA.setText(model6.getName());
         Glide.with(Combat.this).load(model6.getImage()).into(ivA3);
 
-        TextView a = findViewById(R.id.textView_a);
-        TextView b =findViewById(R.id.textView_b);
+        final TextView a = findViewById(R.id.textView_a);
+        final TextView b =findViewById(R.id.textView_b);
         a.setText(String.valueOf(model1.getLife()));
         b.setText(String.valueOf(model4.getLife()));
 
@@ -104,8 +107,22 @@ public class Combat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                model2.setLife((model2.getLife()-model1.getAttaque()));
-              //  player2.setLife(player2.getLife() - player1.getDamage();
+                while (model1.getLife() >0 && model4.getLife() >0){
+                    int newlife = model4.getLife()-model1.getAttaque();
+                    model4.setLife(newlife);
+                    b.setText(String.valueOf(newlife));
+                } if (model4.getLife() >0 && model1.getLife()>0) {
+                    int newlife2 = model1.getLife()-model4.getAttaque();
+                    model1.setLife(newlife2);
+                    a.setText(String.valueOf(newlife2));
+                } else {
+                    Toast.makeText(Combat.this, "Votre joueur a tué un ennemi", Toast.LENGTH_SHORT).show();
+                }
+
+                int newlife = model2.getLife()-model1.getAttaque();
+                model2.setLife(newlife);
+                b.setText(String.valueOf(newlife));
+
 
             }
         });
@@ -118,5 +135,8 @@ public class Combat extends AppCompatActivity {
 
     }
 
+    public void fight (Model player1, Model player2) {
+        player2.setLife(player2.getLife()-player1.getAttaque());
+    }
 
 }
