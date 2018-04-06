@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -99,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                                        Model currentMonster = test.get(position);
+                                        final Model currentMonster = test.get(position);
                                         TextView nameG =findViewById(R.id.textView_nameG);
                                         nameG.setText(currentMonster.getName());
 
-                                        ImageView imgG =findViewById(R.id.imageView_superherosG);
+                                        final ImageView imgG =findViewById(R.id.imageView_superherosG);
                                         Glide.with(MainActivity.this).load(currentMonster.getImage()).into(imgG);
 
                                        TextView lifeG = findViewById(R.id.textView_vieG);
@@ -115,8 +116,40 @@ public class MainActivity extends AppCompatActivity {
                                        TextView speedG = findViewById(R.id.textView_spdG);
                                        speedG.setText(String.valueOf(currentMonster.getSpeed()));
 
+                                       // 3 heros
+                                        ImageButton button1 = findViewById(R.id.imageButton);
+                                        button1.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                ImageView hero1 = findViewById(R.id.imageView_photohero1);
+                                                Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero1);
 
-;
+                                            }
+                                        });
+
+                                        ImageButton button2 = findViewById(R.id.imageButton3);
+                                        button2.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                ImageView hero2 = findViewById(R.id.imageView_photohero2);
+                                                Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero2);
+
+                                            }
+                                        });
+
+                                        ImageButton button3 = findViewById(R.id.imageButton2);
+                                        button3.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                ImageView hero3 = findViewById(R.id.imageViewphotohero3);
+                                                Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero3);
+                                            }
+                                        });
+
+
+
+
+
 
 
 
