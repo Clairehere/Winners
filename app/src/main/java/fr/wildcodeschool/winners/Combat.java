@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 public class Combat extends AppCompatActivity {
     private ImageView gif1,gif2, gif3, gif4, gif5, gif6;
+
 
 
 
@@ -45,7 +48,7 @@ public class Combat extends AppCompatActivity {
         TextView troisA = findViewById(R.id.textView_hero3_player2);
 
         //pour les imageview de haut de page
-        ImageView ivH1 = findViewById(R.id.iv_hero1_player1);
+        final ImageView ivH1 = findViewById(R.id.iv_hero1_player1);
         ImageView ivH2 = findViewById(R.id.iv_hero2_player1);
         ImageView ivH3 = findViewById(R.id.iv_hero3_player1);
         ImageView ivA1 = findViewById(R.id.iv_hero1_player2);
@@ -62,10 +65,10 @@ public class Combat extends AppCompatActivity {
 
 
         Intent intent= getIntent();
-        Model model1= getIntent().getParcelableExtra("hero1");
-        Model model2= getIntent().getParcelableExtra("hero2");
+        final Model model1= getIntent().getParcelableExtra("hero1");
+        final Model model2= getIntent().getParcelableExtra("hero2");
         Model model3= getIntent().getParcelableExtra("hero3");
-        Model model4=getIntent().getParcelableExtra("hero4");
+        final Model model4=getIntent().getParcelableExtra("hero4");
         Model model5= getIntent().getParcelableExtra("hero5");
         Model model6=getIntent().getParcelableExtra("hero6");
 
@@ -89,13 +92,27 @@ public class Combat extends AppCompatActivity {
         troisA.setText(model6.getName());
         Glide.with(Combat.this).load(model6.getImage()).into(ivA3);
 
+        TextView a = findViewById(R.id.textView_a);
+        TextView b =findViewById(R.id.textView_b);
+        a.setText(String.valueOf(model1.getLife()));
+        b.setText(String.valueOf(model4.getLife()));
+
 
        //prbarH1.setProgress(model1.getAttaque());
+        Button button =findViewById(R.id.button_attaquer);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        if (ivH1.isClickable()){
-            if(ivA1.isClickable()){
+                model2.setLife((model2.getLife()-model1.getAttaque()));
+              //  player2.setLife(player2.getLife() - player1.getDamage();
+
             }
-        }
+        });
+
+
+
+
 
 
 
