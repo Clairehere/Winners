@@ -1,6 +1,8 @@
 package fr.wildcodeschool.winners;
 
 import android.content.Intent;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                             profil =findViewById(R.id.imageView_superherosG);
                             for( int g=0; g<response.length();g++) {
                                 JSONObject name10 = (JSONObject) response.get(g);
-                                String names10 = name10.getString("name");
+                                final String names10 = name10.getString("name");
                                 tvname.setText(names10);
 
 
