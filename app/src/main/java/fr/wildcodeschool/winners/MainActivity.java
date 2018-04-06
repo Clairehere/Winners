@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                                        Model un = new Model(names10, vie, speed, attaque,imgprofil);
+                                        Model test2 = test.get(position);
+                                        intent2.putExtra("data", test2);
+                                        intent2.putExtra("data2", un);
                                         //anim image
                                         ImageView zoom = findViewById(R.id.imageView_superherosG);
                                         Animation zoomAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
@@ -149,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
                                                 }, SPLASH_TIME_OUT);
 
 
-                                                Model un = new Model(names10, vie, speed, attaque,imgprofil);
-                                                intent2.putExtra("un", un);
+
+                                                //intent2.putExtra("un", un);
 
                                             }
                                         });
@@ -235,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent);
+                startActivity(intent2);
             }
 
         });
