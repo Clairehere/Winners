@@ -1,6 +1,9 @@
 package fr.wildcodeschool.winners;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -32,8 +35,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView profil;
-
+    private static int SPLASH_TIME_OUT=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
        //Button button = findViewById(R.id.bu)
 
-        profil =findViewById(R.id.imageView_superherosG);
+
         final Intent intent = new Intent(MainActivity.this, Combat.class);
 
         //String url = "https://api.openweathermap.org/data/2.5/weather?q=Toulouse&appid=" + API_KEY;
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                             TextView tvattaque = findViewById(R.id.textView_strG);
                             TextView tvSpd = findViewById(R.id.textView_spdG);
                             TextView tvvie = findViewById(R.id.textView_vieG);
-                            profil =findViewById(R.id.imageView_superherosG);
+                            ImageView profil =findViewById(R.id.imageView_superherosG);
                             for( int g=0; g<response.length();g++) {
                                 JSONObject name10 = (JSONObject) response.get(g);
                                 final String names10 = name10.getString("name");
@@ -98,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
                                 Adapter adapter = new Adapter(MainActivity.this, test);
                                 listView.setAdapter(adapter);
 
-
                                 Model troisEnUn = new Model(names10, vie, speed, attaque,imgprofil);
                                 intent.putExtra("troisEnUn", troisEnUn);
+
 
                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
@@ -110,9 +112,12 @@ public class MainActivity extends AppCompatActivity {
                                         Animation zoomAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
                                         zoom.startAnimation(zoomAnimation);
 
+                                        //anim
                                         TextView zoom1= findViewById(R.id.textView_nameG);
                                         Animation zoomAnimation1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
                                         zoom1.startAnimation(zoomAnimation1);
+
+
 
                                         final Model currentMonster = test.get(position);
                                         TextView nameG =findViewById(R.id.textView_nameG);
@@ -135,13 +140,19 @@ public class MainActivity extends AppCompatActivity {
                                         button1.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                ImageView hero1 = findViewById(R.id.imageView_photohero1);
+                                                final ImageView hero1 = findViewById(R.id.imageView_photohero1);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero1);
 
-                                                Intent intentHeros1 = new Intent(MainActivity.this, Combat.class);
-
-                                                String names = currentMonster.getName().toString();
-                                               intentHeros1.putExtra("name1", names);
+                                                //anim image
+                                                ObjectAnimator.ofFloat(hero1,"translationX",0,20).setDuration(200).start();
+                                                ObjectAnimator.ofFloat(hero1,"translationY",0,20).setDuration(200).start();
+                                                new Handler().postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        ObjectAnimator.ofFloat(hero1,"translationX",20,0).setDuration(200).start();
+                                                        ObjectAnimator.ofFloat(hero1,"translationY",20,0).setDuration(200).start();
+                                                    }
+                                                }, SPLASH_TIME_OUT);
 
                                             }
                                         });
@@ -150,8 +161,19 @@ public class MainActivity extends AppCompatActivity {
                                         button2.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                ImageView hero2 = findViewById(R.id.imageView_photohero2);
+                                                final ImageView hero2 = findViewById(R.id.imageView_photohero2);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero2);
+
+                                                //anim image
+                                                ObjectAnimator.ofFloat(hero2,"translationX",0,20).setDuration(200).start();
+                                                ObjectAnimator.ofFloat(hero2,"translationY",0,20).setDuration(200).start();
+                                                new Handler().postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        ObjectAnimator.ofFloat(hero2,"translationX",20,0).setDuration(200).start();
+                                                        ObjectAnimator.ofFloat(hero2,"translationY",20,0).setDuration(200).start();
+                                                    }
+                                                }, SPLASH_TIME_OUT);
 
                                             }
                                         });
@@ -160,8 +182,19 @@ public class MainActivity extends AppCompatActivity {
                                         button3.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                ImageView hero3 = findViewById(R.id.imageViewphotohero3);
+                                                final ImageView hero3 = findViewById(R.id.imageViewphotohero3);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero3);
+
+                                                //anim image
+                                                ObjectAnimator.ofFloat(hero3,"translationX",0,20).setDuration(200).start();
+                                                ObjectAnimator.ofFloat(hero3,"translationY",0,20).setDuration(200).start();
+                                                new Handler().postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        ObjectAnimator.ofFloat(hero3,"translationX",20,0).setDuration(200).start();
+                                                        ObjectAnimator.ofFloat(hero3,"translationY",20,0).setDuration(200).start();
+                                                    }
+                                                }, SPLASH_TIME_OUT);
                                             }
                                         });
 
@@ -208,6 +241,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+
+
 
     }
 

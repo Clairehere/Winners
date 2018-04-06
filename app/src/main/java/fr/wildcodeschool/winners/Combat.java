@@ -28,16 +28,16 @@ public class Combat extends AppCompatActivity {
         ImageView quatre = findViewById(R.id.imageView3);
         ImageView cinq = findViewById(R.id.imageView2);
         ImageView six = findViewById(R.id.imageView4);
-/*
+
         Model troisEnUnValue = getIntent().getExtras().getParcelable("troisEnUn");
         Glide.with(Combat.this).load(troisEnUnValue.getImage()).into(un);
         Glide.with(Combat.this).load(troisEnUnValue.getImage()).into(deux);
 
         Intent intent= getIntent();
-        String name1= intent.getStringExtra("name1");
+        String name1= getIntent().getStringExtra("name1");
         TextView name = findViewById(R.id.textView_name1);
         name.setText(name1);
-*/
+
     }
 
 
