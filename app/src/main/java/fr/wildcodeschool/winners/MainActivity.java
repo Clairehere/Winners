@@ -44,24 +44,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Button button = findViewById(R.id.bu)
+
+        final Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        //parametre de la frequence clignotement
+        anim.setDuration(700);
+        //temps qu'il reste invisible
+        anim.setStartOffset(800);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
 
         final TextView choisisHeros = findViewById(R.id.textview_choose);
         final ImageView croix1 = findViewById(R.id.imageButton);
         final ImageView croix2 = findViewById(R.id.imageButton3);
         final ImageView croix3 = findViewById(R.id.imageButton2);
         final Button button = findViewById(R.id.button2);
-        TextView stat1=findViewById(R.id.textView_vieG);
-        TextView stat2=findViewById(R.id.textView_strG);
-        TextView stat3=findViewById(R.id.textView_spdG);
-        TextView nom=findViewById(R.id.textView_nameG);
-
-        final ImageView icone1= findViewById(R.id.imageView_hero1);
-        final ImageView icone2= findViewById(R.id.imageView_hero2);
-        final ImageView icone3= findViewById(R.id.imageView_hero3);
 
 
-        final Intent intent = new Intent(MainActivity.this, Combat.class);
+        final ImageView icone1 = findViewById(R.id.imageView_hero1);
+        final ImageView icone2 = findViewById(R.id.imageView_hero2);
+        final ImageView icone3 = findViewById(R.id.imageView_hero3);
+
+
         final Intent intent2 = new Intent(MainActivity.this, Combat.class);
 
 
@@ -111,13 +114,17 @@ public class MainActivity extends AppCompatActivity {
                                 listView.setAdapter(adapter);
 
                                 //Envoit Intent
-                                final Model troisEnUn = new Model(names10, vie, speed, attaque, imgprofil);
-                                intent.putExtra("troisEnUn", troisEnUn);
+                                // final Model troisEnUn = new Model(names10, vie, speed, attaque, imgprofil);
+                                // intent.putExtra("troisEnUn", troisEnUn);
 
-
+                                //Action lorsqu'on click sur la selection d'unHeros
                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        //test
+                                        // Model un = new Model(names10, vie, speed, attaque, imgprofil);
+                                        //  Model test2 = test.get(position);
+                                        // intent2.putExtra("data", test2);
                                         icone1.setVisibility(View.VISIBLE);
                                         icone2.setVisibility(View.VISIBLE);
                                         icone3.setVisibility(View.VISIBLE);
@@ -127,139 +134,119 @@ public class MainActivity extends AppCompatActivity {
                                         tvSpd.setVisibility(View.VISIBLE);
                                         tvname.setVisibility(View.VISIBLE);
                                         profil.setVisibility(View.VISIBLE);
-
-                                        ObjectAnimator.ofFloat(croix1, "translationX", 0, 20).setDuration(200).start();
-                                        ObjectAnimator.ofFloat(croix1, "translationY", 0, 20).setDuration(200).start();
-                                        new Handler().postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                ObjectAnimator.ofFloat(croix1, "translationX", 20, 0).setDuration(200).start();
-                                                ObjectAnimator.ofFloat(croix1, "translationY", 20, 0).setDuration(200).start();
-                                            }
-                                        }, SPLASH_TIME_OUT);
-
-                                        Model un = new Model(names10, vie, speed, attaque, imgprofil);
-                                        Model test2 = test.get(position);
-                                        intent2.putExtra("data", test2);
+                                        croix1.startAnimation(anim);
 
 
                                         //anim image
-                                        ImageView zoom = findViewById(R.id.imageView_superherosG);
-                                        Animation zoomAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
-                                        zoom.startAnimation(zoomAnimation);
+                                        final ImageView zoom = findViewById(R.id.imageView_superherosG);
+                                        //Animation zoomAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
+                                        //zoom.startAnimation(zoomAnimation);
 
                                         //anim nom
                                         TextView zoom1 = findViewById(R.id.textView_nameG);
-                                        Animation zoomAnimation1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
+                                        final Animation zoomAnimation1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
                                         zoom1.startAnimation(zoomAnimation1);
 
+                                        ObjectAnimator.ofFloat(zoom, "translationY", 0, 300).setDuration(900).start();
 
+
+                                        //Initialisation parcelable
                                         final Model currentMonster = test.get(position);
                                         final Model currentMonsterdeux = test.get(position + 50);
+
+                                        //changement stats et des petites images
                                         TextView nameG = findViewById(R.id.textView_nameG);
                                         nameG.setText(currentMonster.getName());
-
                                         final ImageView imgG = findViewById(R.id.imageView_superherosG);
                                         imgG.setVisibility(view.VISIBLE);
                                         Glide.with(MainActivity.this).load(currentMonster.getImage()).into(imgG);
-
                                         TextView lifeG = findViewById(R.id.textView_vieG);
                                         lifeG.setText(String.valueOf(currentMonster.getLife()));
-
                                         TextView forceG = findViewById(R.id.textView_strG);
                                         forceG.setText(String.valueOf(currentMonster.getAttaque()));
-
                                         TextView speedG = findViewById(R.id.textView_spdG);
                                         speedG.setText(String.valueOf(currentMonster.getSpeed()));
 
-                                        // 3 heros images
+                                        // Actions sur les 3petits heros
                                         ImageButton button1 = findViewById(R.id.imageButton);
                                         button1.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-
+                                                //recup données parcelable pour heros 1et 4
                                                 hero1 = currentMonster;
                                                 hero4 = currentMonsterdeux;
 
-                                                choisisHeros.setText("Plus que DEUX Héros");
-
-                                                croix2.setVisibility(View.VISIBLE);
-
-
-
+                                                //chgment texte et anim
+                                                choisisHeros.setText("Plus que 2");
+                                                croix2.startAnimation(anim);
 
                                                 final ImageView hero1 = findViewById(R.id.imageView_photohero1);
                                                 hero1.setVisibility(View.VISIBLE);
-
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero1);
 
-                                                //anim image
-                                                ObjectAnimator.ofFloat(croix2, "translationX", 0, 20).setDuration(200).start();
-                                                ObjectAnimator.ofFloat(croix2, "translationY", 0, 20).setDuration(200).start();
+                                                ObjectAnimator.ofFloat(choisisHeros, "translationX", 20, 0).setDuration(100).start();
                                                 new Handler().postDelayed(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        ObjectAnimator.ofFloat(croix2, "translationX", 20, 0).setDuration(200).start();
-                                                        ObjectAnimator.ofFloat(croix2, "translationY", 20, 0).setDuration(200).start();
+                                                        ObjectAnimator.ofFloat(choisisHeros, "translationX", 20, 0).setDuration(100).start();
                                                     }
                                                 }, SPLASH_TIME_OUT);
-
-
-                                                //intent2.putExtra("un", un);
 
                                             }
                                         });
 
+                                        //2eme heros
                                         ImageButton button2 = findViewById(R.id.imageButton3);
                                         button2.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                croix3.setVisibility(View.VISIBLE);
+                                                //recuperation données heros 2 et 5
                                                 hero2 = currentMonster;
                                                 hero5 = currentMonsterdeux;
-                                                choisisHeros.setText("Plus qu'UN Héros");
+
+                                                //anim et chement texte
+                                                croix3.startAnimation(anim);
+                                                choisisHeros.setText("Plus qu'1");
                                                 final ImageView hero2 = findViewById(R.id.imageView_photohero2);
                                                 hero2.setVisibility(View.VISIBLE);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero2);
 
-                                                //anim image
-                                                ObjectAnimator.ofFloat(croix3, "translationX", 0, 20).setDuration(200).start();
-                                                ObjectAnimator.ofFloat(croix3, "translationY", 0, 20).setDuration(200).start();
+                                                ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(200).start();
                                                 new Handler().postDelayed(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        ObjectAnimator.ofFloat(croix3, "translationX", 20, 0).setDuration(200).start();
-                                                        ObjectAnimator.ofFloat(croix3, "translationY", 20, 0).setDuration(200).start();
+                                                        ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(200).start();
                                                     }
                                                 }, SPLASH_TIME_OUT);
 
                                             }
                                         });
 
+                                        //heros 3
                                         ImageButton button3 = findViewById(R.id.imageButton2);
                                         button3.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+                                                //recup données heros 3 et 6
                                                 hero3 = currentMonster;
                                                 hero6 = currentMonsterdeux;
+
+                                                //anim
                                                 choisisHeros.setText("C'est parti !!!");
                                                 final ImageView hero3 = findViewById(R.id.imageViewphotohero3);
                                                 hero3.setVisibility(View.VISIBLE);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero3);
 
-                                                //anim image
+                                                ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(400).start();
+                                                new Handler().postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(400).start();
+                                                    }
+                                                }, SPLASH_TIME_OUT);
 
-                                                //ImageView tvBlink= findViewById(R.id.fleche);
-                                                //creation de lanimation
-                                                Animation anim=new AlphaAnimation(0.0f,1.0f); //ici les propriete dalpga =0ou a 1 definisse la transparence
-                                                //parametre de la frequence clignotement
-                                                anim.setDuration(900);
-                                                //temps qu'il reste invisible
-                                                anim.setStartOffset(700);
-                                                anim.setRepeatMode(Animation.REVERSE);
-                                                anim.setRepeatCount(Animation.INFINITE);
-                                                //on lance lanimation creer sur limage boutton ou autre que l'on souhaite
-                                                button .startAnimation(anim);
+                                                button.setVisibility(View.VISIBLE);
+                                                button.startAnimation(zoomAnimation1);
                                             }
                                         });
 
@@ -289,7 +276,6 @@ public class MainActivity extends AppCompatActivity {
 
         // On ajoute la requête à la file d'attente
         requestQueue.add(jsonArrayRequest);
-
 
 
         button.setOnClickListener(new View.OnClickListener() {
