@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/arene_1_hackathon"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="49dp" />
 
     <ImageView
         android:id="@+id/iv_hero1_player1"
@@ -75,10 +75,9 @@
 
     <ImageView
         android:id="@+id/imageView_hero1_player"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero2_player1"
         app:layout_constraintStart_toEndOf="@+id/progressBar_hero1_player1"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -88,8 +87,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="60dp"
         android:layout_height="19dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
         android:progress="@android:integer/config_longAnimTime"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero2_player1"
@@ -104,9 +103,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar_hero1_player1"
         app:layout_constraintEnd_toStartOf="@+id/iv_hero3_player2"
-        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -114,7 +114,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero3_player1"
         app:layout_constraintStart_toEndOf="@+id/progressBar_hero2_player1"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -128,24 +129,28 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero3_player1"
         app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textView_hero2_player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/progressBar_hero2_player1"
         app:layout_constraintEnd_toStartOf="@+id/imageView_hero2_player1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView_hero3_player1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="68dp"
+        android:layout_marginStart="4dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/progressBar_hero3_player1"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -155,8 +160,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="60dp"
         android:layout_height="19dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -164,19 +169,21 @@
         android:id="@+id/textView_hero3_player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/progressBar_hero3_player1"
         app:layout_constraintEnd_toStartOf="@+id/imageView_hero3_player1"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/imageView_hero1_player2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero2_player2"
         app:layout_constraintEnd_toStartOf="@+id/progressBar_hero1_player2"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -186,8 +193,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="60dp"
         android:layout_height="19dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="16dp"
         android:progress="@android:integer/config_longAnimTime"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero2_player2"
@@ -197,13 +204,14 @@
     <TextView
         android:id="@+id/textView_hero1_player2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="18dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar_hero1_player2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView_hero1_player2" />
 
     <ImageView
@@ -211,7 +219,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="12dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero3_player2"
         app:layout_constraintEnd_toStartOf="@+id/progressBar_hero2_player2"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -233,6 +242,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/progressBar_hero2_player2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView_hero2_player2" />
@@ -241,8 +251,9 @@
         android:id="@+id/imageView_hero3_player2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="68dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/progressBar_hero3_player2"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -252,20 +263,23 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/textView_hero3_player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/progressBar_hero3_player2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toEndOf="@+id/imageView_hero3_player2" />
 
     <ImageView
@@ -309,9 +323,9 @@
         android:id="@+id/textView_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero1_player2"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -319,9 +333,9 @@
         android:id="@+id/textView_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="56dp"
         android:text="TextView"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView_hero1_player"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -331,8 +345,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Button"
+        android:layout_marginTop="224dp"
+        android:text="Fight"
         app:layout_constraintEnd_toStartOf="@+id/imageView_hero2_player2"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toEndOf="@+id/imageView_hero2_player1"
-        tools:layout_editor_absoluteY="371dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

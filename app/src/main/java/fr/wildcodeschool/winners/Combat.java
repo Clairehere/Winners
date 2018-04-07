@@ -1,6 +1,8 @@
 package fr.wildcodeschool.winners;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -17,8 +19,8 @@ import com.bumptech.glide.Glide;
 public class Combat extends AppCompatActivity {
     private ImageView gif1,gif2, gif3, gif4, gif5, gif6;
 
-    public Model model1, model2;
-
+    public Model model1, model2, model3, model4, model5, model6;
+    private static int SPLASH_TIME_OUT=100;
 
 
 
@@ -32,6 +34,12 @@ public class Combat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
 
+
+        gif4 = findViewById(R.id.imageView_hero1_player);
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel007.gif").into(gif4);
+
+        gif5 = findViewById(R.id.imageView_hero1_player2);
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel002.gif").into(gif5);
 
         gif1 = (ImageView) findViewById(R.id.imageView_gif_player1);
         gif3 = (ImageView) findViewById(R.id.imageView_gif_player2);
@@ -70,10 +78,10 @@ public class Combat extends AppCompatActivity {
         Intent intent= getIntent();
          model1= getIntent().getParcelableExtra("hero1");
          model2= getIntent().getParcelableExtra("hero2");
-        Model model3= getIntent().getParcelableExtra("hero3");
-        final Model model4=getIntent().getParcelableExtra("hero4");
-        Model model5= getIntent().getParcelableExtra("hero5");
-        Model model6=getIntent().getParcelableExtra("hero6");
+        model3= getIntent().getParcelableExtra("hero3");
+         model4=getIntent().getParcelableExtra("hero4");
+         model5= getIntent().getParcelableExtra("hero5");
+         model6=getIntent().getParcelableExtra("hero6");
 
 
 
@@ -97,8 +105,8 @@ public class Combat extends AppCompatActivity {
 
         final TextView a = findViewById(R.id.textView_a);
         final TextView b =findViewById(R.id.textView_b);
-        a.setText(String.valueOf(model1.getLife()));
-        b.setText(String.valueOf(model4.getLife()));
+        a.setText(String.valueOf(model1.getLife()*7));
+        b.setText(String.valueOf(model4.getLife()*7));
 
 
        //prbarH1.setProgress(model1.getAttaque());
@@ -108,20 +116,34 @@ public class Combat extends AppCompatActivity {
             public void onClick(View v) {
 
                 while (model1.getLife() >0 && model4.getLife() >0){
+                    ObjectAnimator.ofFloat(gif4,"translationX",0,350).setDuration(700).start();
+                   // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                           ObjectAnimator.ofFloat(gif4,"translationX",350,0).setDuration(200).start();
+                        //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                        }
+                    }, SPLASH_TIME_OUT);
                     int newlife = model4.getLife()-model1.getAttaque();
                     model4.setLife(newlife);
-                    b.setText(String.valueOf(newlife));
+                    b.setText(String.valueOf(newlife*7));
                 } if (model4.getLife() >0 && model1.getLife()>0) {
+                    ObjectAnimator.ofFloat(gif5,"translationX",0,350).setDuration(700).start();
+                    // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ObjectAnimator.ofFloat(gif5,"translationX",350,0).setDuration(200).start();
+                            //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                        }
+                    }, SPLASH_TIME_OUT);
                     int newlife2 = model1.getLife()-model4.getAttaque();
                     model1.setLife(newlife2);
-                    a.setText(String.valueOf(newlife2));
+                    a.setText(String.valueOf(newlife2*7));
                 } else {
-                    Toast.makeText(Combat.this, "Votre joueur a tué un ennemi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
                 }
-
-                int newlife = model2.getLife()-model1.getAttaque();
-                model2.setLife(newlife);
-                b.setText(String.valueOf(newlife));
 
 
             }
@@ -135,8 +157,6 @@ public class Combat extends AppCompatActivity {
 
     }
 
-    public void fight (Model player1, Model player2) {
-        player2.setLife(player2.getLife()-player1.getAttaque());
-    }
+
 
 }
