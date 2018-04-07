@@ -159,6 +159,7 @@ public class Combat extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel008.gif").into(gif6);
                 ObjectAnimator.ofFloat(gif6,"translationX",0,350).setDuration(200).start();
                 // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
                 new Handler().postDelayed(new Runnable() {
@@ -166,8 +167,10 @@ public class Combat extends AppCompatActivity {
                     public void run() {
                         ObjectAnimator.ofFloat(gif6,"translationX",350,0).setDuration(200).start();
                         //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel006.gif").into(gif6);
                     }
                 }, SPLASH_TIME_OUT);
+
 
             }
         });
@@ -176,6 +179,7 @@ public class Combat extends AppCompatActivity {
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ObjectAnimator.ofFloat(gif8,"translationX",0,350).setDuration(200).start();
                 // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
                 new Handler().postDelayed(new Runnable() {
