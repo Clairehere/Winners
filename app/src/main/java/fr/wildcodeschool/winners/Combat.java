@@ -155,6 +155,40 @@ public class Combat extends AppCompatActivity {
 
             }
         });
+        Button bt2=findViewById(R.id.button_attaquer5);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator.ofFloat(gif6,"translationX",0,350).setDuration(200).start();
+                // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ObjectAnimator.ofFloat(gif6,"translationX",350,0).setDuration(200).start();
+                        //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                    }
+                }, SPLASH_TIME_OUT);
+
+            }
+        });
+
+        Button bt3=findViewById(R.id.button_attaquer3);
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator.ofFloat(gif8,"translationX",0,350).setDuration(200).start();
+                // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ObjectAnimator.ofFloat(gif8,"translationX",350,0).setDuration(200).start();
+                        //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                    }
+                }, SPLASH_TIME_OUT);
+
+            }
+        });
+
 
 
 
