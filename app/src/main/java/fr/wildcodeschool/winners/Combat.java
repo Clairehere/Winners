@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 public class Combat extends AppCompatActivity {
-    private ImageView gif1,gif2, gif3, gif4, gif5, gif6;
+    private ImageView gif1,gif2, gif3, gif4, gif5, gif6, gif7, gif8,gif9;
 
     public Model model1, model2, model3, model4, model5, model6;
     private static int SPLASH_TIME_OUT=100;
@@ -36,13 +36,28 @@ public class Combat extends AppCompatActivity {
 
 
         gif4 = findViewById(R.id.imageView_hero1_player);
-        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel007.gif").into(gif4);
-
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel002.gif").into(gif4);
         gif5 = findViewById(R.id.imageView_hero1_player2);
-        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel002.gif").into(gif5);
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/alien-vs-predator/3.gif").into(gif5);
+        gif6 = findViewById(R.id.imageView_hero2_player1);
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel006.gif").into(gif6);
+        gif7 = findViewById(R.id.imageView_hero2_player2);
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/alien-vs-predator/3.gif").into(gif7);
+        gif8 = findViewById(R.id.imageView_hero3_player1);
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel008.gif").into(gif8);
+        gif9 = findViewById(R.id.imageView_hero3_player2);
+        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/alien-vs-predator/3.gif").into(gif9);
+
+
+
+
+
+
+
 
         gif1 = (ImageView) findViewById(R.id.imageView_gif_player1);
         gif3 = (ImageView) findViewById(R.id.imageView_gif_player2);
+
 
         //https://i.pinimg.com/originals/03/bc/f8/03bcf88e49e97cff1834b2a9136bede7.jpg
 
@@ -116,7 +131,7 @@ public class Combat extends AppCompatActivity {
             public void onClick(View v) {
 
                 while (model1.getLife() >0 && model4.getLife() >0){
-                    ObjectAnimator.ofFloat(gif4,"translationX",0,350).setDuration(700).start();
+                    ObjectAnimator.ofFloat(gif4,"translationX",0,350).setDuration(200).start();
                    // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -129,15 +144,7 @@ public class Combat extends AppCompatActivity {
                     model4.setLife(newlife);
                     b.setText(String.valueOf(newlife*7));
                 } if (model4.getLife() >0 && model1.getLife()>0) {
-                    ObjectAnimator.ofFloat(gif5,"translationX",0,350).setDuration(700).start();
-                    // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            ObjectAnimator.ofFloat(gif5,"translationX",350,0).setDuration(200).start();
-                            //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
-                        }
-                    }, SPLASH_TIME_OUT);
+
                     int newlife2 = model1.getLife()-model4.getAttaque();
                     model1.setLife(newlife2);
                     a.setText(String.valueOf(newlife2*7));
