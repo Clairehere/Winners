@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                                                 //creation de lanimation
                                                 Animation anim=new AlphaAnimation(0.0f,1.0f); //ici les propriete dalpga =0ou a 1 definisse la transparence
                                                 //parametre de la frequence clignotement
-                                                anim.setDuration(500);
+                                                anim.setDuration(900);
                                                 //temps qu'il reste invisible
                                                 anim.setStartOffset(700);
                                                 anim.setRepeatMode(Animation.REVERSE);

@@ -148,10 +148,11 @@ public class Combat extends AppCompatActivity {
                     int newlife2 = model1.getLife()-model4.getAttaque();
                     model1.setLife(newlife2);
                     a.setText(String.valueOf(newlife2*7));
+
+
                 } else {
                     Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });
@@ -159,6 +160,7 @@ public class Combat extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel008.gif").into(gif6);
                 ObjectAnimator.ofFloat(gif6,"translationX",0,350).setDuration(200).start();
                 // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
@@ -170,6 +172,22 @@ public class Combat extends AppCompatActivity {
                         Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel006.gif").into(gif6);
                     }
                 }, SPLASH_TIME_OUT);
+
+                int newlife = model5.getLife()-model2.getAttaque();
+                model5.setLife(newlife);
+                b.setText(String.valueOf(newlife*7));
+             if (model5.getLife() >0 && model2.getLife()>0) {
+
+                int newlife2 = model2.getLife()-model5.getAttaque();
+                model2.setLife(newlife2);
+                a.setText(String.valueOf(newlife2*7));
+
+
+
+
+            } else {
+                Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
+            }
 
 
             }
@@ -189,6 +207,22 @@ public class Combat extends AppCompatActivity {
                         //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
                     }
                 }, SPLASH_TIME_OUT);
+
+                int newlife = model6.getLife()-model3.getAttaque();
+                model6.setLife(newlife);
+                b.setText(String.valueOf(newlife*7));
+                if (model6.getLife() >0 && model3.getLife()>0) {
+
+                    int newlife2 = model3.getLife()-model6.getAttaque();
+                    model3.setLife(newlife2);
+                    a.setText(String.valueOf(newlife2*7));
+
+
+
+
+                } else {
+                    Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
