@@ -5,77 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/arene"
-    tools:context="fr.wildcodeschool.winners.MainActivity"
-    >
+    tools:context="fr.wildcodeschool.winners.MainActivity">
 
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/ic_input_add"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/imageView_superherosG"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/ic_input_add"
-        android:elevation="1dp"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/imageView_superherosG"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:srcCompat="@android:drawable/ic_input_add" />
 
     <ImageView
         android:id="@+id/imageView_superherosG"
         android:layout_width="132dp"
-        android:layout_height="172dp"
+        android:layout_height="162dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:drawable/ic_input_add"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textView_select3"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <TextView
         android:id="@+id/textView_nameG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="95dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="Name"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_superherosG" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_choose">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:id="@+id/textView_strG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="stats degat"
             android:textColor="@android:color/black"
-            android:textSize="30sp"
+            android:textSize="18sp"
+
             android:textStyle="bold"
             android:visibility="invisible"
             app:layout_constraintStart_toEndOf="@+id/imageView_hero2"
@@ -86,10 +76,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="stats speed"
             android:textColor="@android:color/black"
-            android:textSize="30sp"
+            android:textSize="18sp"
+
             android:textStyle="bold"
             android:visibility="invisible"
             app:layout_constraintStart_toEndOf="@+id/imageView_hero3"
@@ -100,11 +91,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="stat vie"
             android:textColor="@android:color/black"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:textStyle="bold"
+
             android:visibility="invisible"
             app:layout_constraintStart_toEndOf="@+id/imageView_hero1"
             app:layout_constraintTop_toTopOf="parent" />
@@ -114,6 +106,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
+
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -123,7 +116,8 @@
             android:id="@+id/imageView_hero2"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
+
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_hero1"
@@ -133,7 +127,8 @@
             android:id="@+id/imageView_hero3"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="8dp"
+
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_hero2"
@@ -141,32 +136,25 @@
     </android.support.constraint.ConstraintLayout>
 
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="120dp"
-        android:layout_height="58dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:text="Combattre"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_nameG"
-        tools:ignore="MissingConstraints" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="176dp"
-        android:orientation="vertical">
+        android:layout_width="400dp"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
 
         <GridView
             android:id="@+id/gridView"
             android:layout_width="match_parent"
-            android:layout_height="176dp"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:numColumns="5"
+            android:numColumns="4"
+            android:orientation="horizontal"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbars="horizontal"
             android:stretchMode="columnWidth" />
 
     </LinearLayout>
@@ -175,56 +163,143 @@
         android:id="@+id/imageViewphotohero3"
         android:layout_width="50dp"
         android:layout_height="50dp"
+
         android:layout_marginTop="8dp"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toBottomOf="@+id/imageView_photohero2"
         app:srcCompat="@drawable/stat_life" />
 
-    <ImageView
-        android:id="@+id/imageView_photohero2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <TextView
+        android:id="@+id/textview_choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:text="Choisis 3 Héros"
+        android:textColor="#E99556"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView_superherosG"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="30dp"
+        android:rotation="180"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="GO"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView_select3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Ajouter ce 3em Heros"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_photohero1"
-        app:srcCompat="@drawable/stat_life" />
+        app:layout_constraintStart_toEndOf="@+id/imageView_superherosG"
+        app:layout_constraintTop_toBottomOf="@+id/textView_select2" />
+
+    <TextView
+        android:id="@+id/textView_select2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Ajouter ce 2em Heros"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imageView_superherosG"
+        app:layout_constraintTop_toBottomOf="@+id/textView_select1" />
+
+    <TextView
+        android:id="@+id/textView_select1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ajouter ce 1er Heros"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imageView_superherosG"
+        app:layout_constraintTop_toBottomOf="@+id/textview_choose" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/ic_input_add"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/textView_select3"
+        app:layout_constraintTop_toBottomOf="@+id/textview_choose"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <ImageView
         android:id="@+id/imageView_photohero1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/textview_choose"
         app:srcCompat="@drawable/stat_life" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:id="@+id/imageButton3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@android:drawable/ic_input_add"
+        android:elevation="1dp"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/imageView_superherosG"
-        app:layout_constraintTop_toBottomOf="@+id/textview_choose"
+        app:layout_constraintStart_toEndOf="@+id/textView_select3"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <TextView
-        android:id="@+id/textview_choose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="200dp"
-        android:text="Choisis 3 Héros"
-        android:textColor="#E99556"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView_photohero2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_photohero1"
+        app:srcCompat="@drawable/stat_life" />
 
 </android.support.constraint.ConstraintLayout>

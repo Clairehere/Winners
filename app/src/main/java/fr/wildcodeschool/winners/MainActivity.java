@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button2);
 
 
+        final TextView select1 =findViewById(R.id.textView_select1);
+        final TextView select2 =findViewById(R.id.textView_select2);
+        final TextView select3 =findViewById(R.id.textView_select3);
+
         final ImageView icone1 = findViewById(R.id.imageView_hero1);
         final ImageView icone2 = findViewById(R.id.imageView_hero2);
         final ImageView icone3 = findViewById(R.id.imageView_hero3);
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         final GridView listView = findViewById(R.id.gridView);
         final ArrayList<Model> test = new ArrayList<>();
 
+
         // Recup API
         final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
+                            choisisHeros.startAnimation(anim);
 
                             final TextView tvname = findViewById(R.id.textView_nameG);
                             final TextView tvattaque = findViewById(R.id.textView_strG);
@@ -135,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
                                         tvname.setVisibility(View.VISIBLE);
                                         profil.setVisibility(View.VISIBLE);
                                         croix1.setVisibility(View.VISIBLE);
+                                        select1.setVisibility(View.VISIBLE);
+
 
 
                                         //anim image
@@ -147,7 +156,8 @@ public class MainActivity extends AppCompatActivity {
                                         final Animation zoomAnimation1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
                                         zoom1.startAnimation(zoomAnimation1);
 
-                                        ObjectAnimator.ofFloat(zoom, "translationY", 0, 200).setDuration(900).start();
+                                        ObjectAnimator.ofFloat(zoom, "translationY", 0, 270).setDuration(900).start();
+                                        ObjectAnimator.ofFloat(zoom, "translationX", 350, 0).setDuration(900).start();
 
 
                                         //Initialisation parcelable
@@ -179,18 +189,12 @@ public class MainActivity extends AppCompatActivity {
                                                 //chgment texte et anim
                                                 choisisHeros.setText("Plus que 2");
                                                 croix2.setVisibility(View.VISIBLE);
+                                                select2.setVisibility(View.VISIBLE);
 
                                                 final ImageView hero1 = findViewById(R.id.imageView_photohero1);
                                                 hero1.setVisibility(View.VISIBLE);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero1);
 
-                                                ObjectAnimator.ofFloat(choisisHeros, "translationX", 20, 0).setDuration(100).start();
-                                                new Handler().postDelayed(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        ObjectAnimator.ofFloat(choisisHeros, "translationX", 20, 0).setDuration(100).start();
-                                                    }
-                                                }, SPLASH_TIME_OUT);
 
                                             }
                                         });
@@ -206,18 +210,12 @@ public class MainActivity extends AppCompatActivity {
 
                                                 //anim et chement texte
                                                 croix3.setVisibility(View.VISIBLE);
+                                                select3.setVisibility(View.VISIBLE);
                                                 choisisHeros.setText("Plus qu'1");
                                                 final ImageView hero2 = findViewById(R.id.imageView_photohero2);
                                                 hero2.setVisibility(View.VISIBLE);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero2);
 
-                                                ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(200).start();
-                                                new Handler().postDelayed(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(200).start();
-                                                    }
-                                                }, SPLASH_TIME_OUT);
 
                                             }
                                         });
@@ -237,13 +235,6 @@ public class MainActivity extends AppCompatActivity {
                                                 hero3.setVisibility(View.VISIBLE);
                                                 Glide.with(MainActivity.this).load(currentMonster.getImage()).into(hero3);
 
-                                                ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(400).start();
-                                                new Handler().postDelayed(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        ObjectAnimator.ofFloat(choisisHeros, "translationX", 70, 0).setDuration(400).start();
-                                                    }
-                                                }, SPLASH_TIME_OUT);
 
                                                 button.setVisibility(View.VISIBLE);
                                                 button.startAnimation(zoomAnimation1);
