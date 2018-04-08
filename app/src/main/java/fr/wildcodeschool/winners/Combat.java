@@ -104,66 +104,66 @@ public class Combat extends AppCompatActivity {
         f.setText(String.valueOf(model6.getLife()));
 
 
-        //prbarH1.setProgress(model1.getAttaque());
         Button button = findViewById(R.id.button_attaquer);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 while (model1.getLife() > 0 && model4.getLife() > 0) {
-                    //anim combat A1
+                    //anim combat joueur 1
                     ObjectAnimator.ofFloat(gif4, "translationX", 0, 750).setDuration(400).start();
-                    // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             ObjectAnimator.ofFloat(gif4, "translationX", 750, 0).setDuration(400).start();
-                            //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
                         }
                     }, SPLASH_TIME_OUT);
+
+                    //Attaque du joueur 1
                     int newlife = model4.getLife() - model1.getAttaque();
                     model4.setLife(newlife);
                     d.setText(String.valueOf(newlife));
-                    //si adv meurt Tombe
-                    if (model4.getLife() <= 0) {
-                        int size = 10;
 
+                    //si adv joueur 2 meurt :Tombe
+                    if (model4.getLife() <= 0) {
 
                         Glide.with(Combat.this).load(R.drawable.tombe).into(gif5);
                         gif5.getLayoutParams().width = 130;
                         gif5.getLayoutParams().width = 130;
-
-
-                    }
-                }
-
-                //sinon il attaque
-                if (model4.getLife() > 0 && model1.getLife() > 0) {
-
-                    int newlife2 = model1.getLife() - model4.getAttaque();
-                    model1.setLife(newlife2);
-                    a.setText(String.valueOf(newlife2));
-                    //si il meurt tombe
-                    if (model1.getLife() <= 0) {
-
-                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif4);
-                        gif4.getLayoutParams().width = 130;
-                        gif4.getLayoutParams().width = 130;
                     }
 
 
-                } else {
-                    Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
+                    //sinon joueur 2 attaque
+                    if (model4.getLife() > 0 && model1.getLife() > 0) {
+
+                        int newlife2 = model1.getLife() - model4.getAttaque();
+                        model1.setLife(newlife2);
+                        a.setText(String.valueOf(newlife2));
+
+
+                        //si joueur1 meurt: tombe
+                        if (model1.getLife() <= 0) {
+
+                            Glide.with(Combat.this).load(R.drawable.tombe).into(gif4);
+                            gif4.getLayoutParams().width = 130;
+                            gif4.getLayoutParams().width = 130;
+                        }
+
+
+                    } else {
+                        Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
         });
+
         Button bt2 = findViewById(R.id.button_attaquer5);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 while (model5.getLife() > 0 && model2.getLife() > 0) {
-                    //anim attaque A2
+                    //anim attaque joueur 1 heros 2
                     ObjectAnimator.ofFloat(gif6, "translationX", 0, 350).setDuration(500).start();
                     // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
                     new Handler().postDelayed(new Runnable() {
@@ -174,39 +174,40 @@ public class Combat extends AppCompatActivity {
                         }
                     }, SPLASH_TIME_OUT);
 
+                    //attaque joueur 1 heros 2
                     int newlife = model5.getLife() - model2.getAttaque();
                     model5.setLife(newlife);
                     e.setText(String.valueOf(newlife));
-                    //si adv meurt tombe
+                    //si joueur 2 heros 2 meurt: tombe
                     if (model5.getLife() <= 0) {
 
                         Glide.with(Combat.this).load(R.drawable.tombe).into(gif7);
                         gif7.getLayoutParams().width = 130;
                         gif7.getLayoutParams().width = 130;
                     }
-                }
 
-                //sinon il attaque
-                if (model5.getLife() > 0 && model2.getLife() > 0) {
 
-                    int newlife2 = model2.getLife() - model5.getAttaque();
-                    model2.setLife(newlife2);
-                    b.setText(String.valueOf(newlife2));
+                    //sinon joueur 2 attaque
+                    if (model5.getLife() > 0 && model2.getLife() > 0) {
 
-                    //si il meurt tombe
-                    if (model2.getLife() <= 0) {
+                        int newlife2 = model2.getLife() - model5.getAttaque();
+                        model2.setLife(newlife2);
+                        b.setText(String.valueOf(newlife2));
 
-                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif6);
-                        gif6.getLayoutParams().width = 130;
-                        gif6.getLayoutParams().width = 130;
+                        //si joueur 1 meurt: tombe
+                        if (model2.getLife() <= 0) {
+
+                            Glide.with(Combat.this).load(R.drawable.tombe).into(gif6);
+                            gif6.getLayoutParams().width = 130;
+                            gif6.getLayoutParams().width = 130;
+                        }
+
+
+                    } else {
+                        Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
                     }
 
-
-                } else {
-                    Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 
@@ -215,43 +216,48 @@ public class Combat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 while (model6.getLife() > 0 && model3.getLife() > 0) {
+
+                    // anim attaque joueur 1 heros 3
                     ObjectAnimator.ofFloat(gif8, "translationX", 0, 750).setDuration(500).start();
-                    // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
+
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             ObjectAnimator.ofFloat(gif8, "translationX", 750, 0).setDuration(500).start();
-                            //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
                         }
                     }, SPLASH_TIME_OUT);
 
+                    //attaque joueur 1 heros 3
                     int newlife = model6.getLife() - model3.getAttaque();
                     model6.setLife(newlife);
                     f.setText(String.valueOf(newlife));
 
+                    // si joueur 2 heros 3 meurt = tombe
                     if (model6.getLife() <= 0) {
-
                         Glide.with(Combat.this).load(R.drawable.tombe).into(gif9);
                         gif9.getLayoutParams().width = 130;
                         gif9.getLayoutParams().width = 130;
                     }
-                }
-                if (model6.getLife() > 0 && model3.getLife() > 0) {
 
-                    int newlife2 = model3.getLife() - model6.getAttaque();
-                    model3.setLife(newlife2);
-                    c.setText(String.valueOf(newlife2));
+                    //sinon joueur 2 attaque
+                    if (model6.getLife() > 0 && model3.getLife() > 0) {
 
-                    if (model3.getLife() <= 0) {
+                        int newlife2 = model3.getLife() - model6.getAttaque();
+                        model3.setLife(newlife2);
+                        c.setText(String.valueOf(newlife2));
 
-                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif8);
-                        gif8.getLayoutParams().width = 130;
-                        gif8.getLayoutParams().width = 130;
+                        //si joueur 1 attaqué meurt : tombe
+                        if (model3.getLife() <= 0) {
+
+                            Glide.with(Combat.this).load(R.drawable.tombe).into(gif8);
+                            gif8.getLayoutParams().width = 130;
+                            gif8.getLayoutParams().width = 130;
+                        }
+
+
+                    } else {
+                        Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
                     }
-
-
-                } else {
-                    Toast.makeText(Combat.this, "Votre joueur a tué  votre ennemi", Toast.LENGTH_SHORT).show();
                 }
 
             }
