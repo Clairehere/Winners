@@ -295,7 +295,7 @@
         android:layout_marginStart="24dp"
         android:text="Point vie"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_hero1_player1" />
@@ -307,7 +307,7 @@
         android:layout_marginStart="16dp"
         android:text="Point vie"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_attaquer" />
@@ -319,7 +319,7 @@
         android:layout_marginStart="16dp"
         android:text="Point vie"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_attaquer5" />
