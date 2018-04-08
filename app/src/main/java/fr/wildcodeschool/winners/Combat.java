@@ -1,6 +1,7 @@
 package fr.wildcodeschool.winners;
 
 import android.animation.ObjectAnimator;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,11 +48,12 @@ public class Combat extends AppCompatActivity {
         TextView deuxA = findViewById(R.id.textView_hero2_player2);
         TextView troisA = findViewById(R.id.textView_hero3_player2);
 
+
         //pour les imageview de haut de page
         final ImageView ivH1 = findViewById(R.id.iv_hero1_player1);
         ImageView ivH2 = findViewById(R.id.iv_hero2_player1);
         ImageView ivH3 = findViewById(R.id.iv_hero3_player1);
-        ImageView ivA1 = findViewById(R.id.iv_hero1_player2);
+        final ImageView ivA1 = findViewById(R.id.iv_hero1_player2);
         ImageView ivA2 = findViewById(R.id.iv_hero2_player2);
         ImageView ivA3 = findViewById(R.id.iv_hero3_player2);
 
@@ -63,12 +65,12 @@ public class Combat extends AppCompatActivity {
         final TextView f = findViewById(R.id.textView_f);
 
         //pour les progressbar
-      //  ProgressBar prbarH1 = findViewById(R.id.progressBar_hero1_player1);
+        //  ProgressBar prbarH1 = findViewById(R.id.progressBar_hero1_player1);
         //ProgressBar prbarH2 = findViewById(R.id.progressBar_hero2_player1);
         //ProgressBar prbarH3 = findViewById(R.id.progressBar_hero3_player1);
-      //  ProgressBar prbarA1 = findViewById(R.id.progressBar_hero1_player2);
-       // ProgressBar prbarA2 = findViewById(R.id.progressBar_hero2_player2);
-       // ProgressBar prbarA3 = findViewById(R.id.progressBar_hero3_player2);
+        //  ProgressBar prbarA1 = findViewById(R.id.progressBar_hero1_player2);
+        // ProgressBar prbarA2 = findViewById(R.id.progressBar_hero2_player2);
+        // ProgressBar prbarA3 = findViewById(R.id.progressBar_hero3_player2);
 
 
         // parcelables recuperers
@@ -94,14 +96,12 @@ public class Combat extends AppCompatActivity {
         Glide.with(Combat.this).load(model6.getImage()).into(ivA3);
 
 
-
         a.setText(String.valueOf(model1.getLife()));
         b.setText(String.valueOf(model2.getLife()));
         c.setText(String.valueOf(model3.getLife()));
         d.setText(String.valueOf(model4.getLife()));
         e.setText(String.valueOf(model5.getLife()));
         f.setText(String.valueOf(model6.getLife()));
-
 
 
         //prbarH1.setProgress(model1.getAttaque());
@@ -111,6 +111,7 @@ public class Combat extends AppCompatActivity {
             public void onClick(View v) {
 
                 while (model1.getLife() > 0 && model4.getLife() > 0) {
+                    //anim combat A1
                     ObjectAnimator.ofFloat(gif4, "translationX", 0, 750).setDuration(400).start();
                     // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
                     new Handler().postDelayed(new Runnable() {
@@ -123,12 +124,32 @@ public class Combat extends AppCompatActivity {
                     int newlife = model4.getLife() - model1.getAttaque();
                     model4.setLife(newlife);
                     d.setText(String.valueOf(newlife));
+                    //si adv meurt Tombe
+                    if (model4.getLife() <= 0) {
+                        int size = 10;
+
+
+                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif5);
+                        gif5.getLayoutParams().width = 130;
+                        gif5.getLayoutParams().width = 130;
+
+
+                    }
                 }
+
+                //sinon il attaque
                 if (model4.getLife() > 0 && model1.getLife() > 0) {
 
                     int newlife2 = model1.getLife() - model4.getAttaque();
                     model1.setLife(newlife2);
                     a.setText(String.valueOf(newlife2));
+                    //si il meurt tombe
+                    if (model1.getLife() <= 0) {
+
+                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif4);
+                        gif4.getLayoutParams().width = 130;
+                        gif4.getLayoutParams().width = 130;
+                    }
 
 
                 } else {
@@ -141,8 +162,7 @@ public class Combat extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel008.gif").into(gif6);
+                //anim attaque A2
                 ObjectAnimator.ofFloat(gif6, "translationX", 0, 350).setDuration(500).start();
                 // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
                 new Handler().postDelayed(new Runnable() {
@@ -150,18 +170,34 @@ public class Combat extends AppCompatActivity {
                     public void run() {
                         ObjectAnimator.ofFloat(gif6, "translationX", 350, 0).setDuration(500).start();
                         //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
-                        Glide.with(Combat.this).load("http://www.icone-gif.com/gif/super-heros/marvel/marvel006.gif").into(gif6);
                     }
                 }, SPLASH_TIME_OUT);
 
                 int newlife = model5.getLife() - model2.getAttaque();
                 model5.setLife(newlife);
                 e.setText(String.valueOf(newlife));
+                //si adv meurt tombe
+                if (model5.getLife() <= 0) {
+
+                    Glide.with(Combat.this).load(R.drawable.tombe).into(gif7);
+                    gif7.getLayoutParams().width = 130;
+                    gif7.getLayoutParams().width = 130;
+                }
+
+                //sinon il attaque
                 if (model5.getLife() > 0 && model2.getLife() > 0) {
 
                     int newlife2 = model2.getLife() - model5.getAttaque();
                     model2.setLife(newlife2);
                     b.setText(String.valueOf(newlife2));
+
+                    //si il meurt tombe
+                    if (model2.getLife() <= 0) {
+
+                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif6);
+                        gif6.getLayoutParams().width = 130;
+                        gif6.getLayoutParams().width = 130;
+                    }
 
 
                 } else {
@@ -189,12 +225,26 @@ public class Combat extends AppCompatActivity {
 
                 int newlife = model6.getLife() - model3.getAttaque();
                 model6.setLife(newlife);
-                f.setText(String.valueOf(newlife * 7));
+                f.setText(String.valueOf(newlife));
+
+                if (model6.getLife() <= 0) {
+
+                    Glide.with(Combat.this).load(R.drawable.tombe).into(gif9);
+                    gif9.getLayoutParams().width = 130;
+                    gif9.getLayoutParams().width = 130;
+                }
                 if (model6.getLife() > 0 && model3.getLife() > 0) {
 
                     int newlife2 = model3.getLife() - model6.getAttaque();
                     model3.setLife(newlife2);
-                    c.setText(String.valueOf(newlife2 * 7));
+                    c.setText(String.valueOf(newlife2));
+
+                    if (model3.getLife() <= 0) {
+
+                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif8);
+                        gif8.getLayoutParams().width = 130;
+                        gif8.getLayoutParams().width = 130;
+                    }
 
 
                 } else {

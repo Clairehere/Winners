@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                                         tvSpd.setVisibility(View.VISIBLE);
                                         tvname.setVisibility(View.VISIBLE);
                                         profil.setVisibility(View.VISIBLE);
-                                        croix1.startAnimation(anim);
+                                        croix1.setVisibility(View.VISIBLE);
 
 
                                         //anim image
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
                                                 //chgment texte et anim
                                                 choisisHeros.setText("Plus que 2");
-                                                croix2.startAnimation(anim);
+                                                croix2.setVisibility(View.VISIBLE);
 
                                                 final ImageView hero1 = findViewById(R.id.imageView_photohero1);
                                                 hero1.setVisibility(View.VISIBLE);
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                                                 hero5 = currentMonsterdeux;
 
                                                 //anim et chement texte
-                                                croix3.startAnimation(anim);
+                                                croix3.setVisibility(View.VISIBLE);
                                                 choisisHeros.setText("Plus qu'1");
                                                 final ImageView hero2 = findViewById(R.id.imageView_photohero2);
                                                 hero2.setVisibility(View.VISIBLE);
