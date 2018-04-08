@@ -162,26 +162,28 @@ public class Combat extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //anim attaque A2
-                ObjectAnimator.ofFloat(gif6, "translationX", 0, 350).setDuration(500).start();
-                // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        ObjectAnimator.ofFloat(gif6, "translationX", 350, 0).setDuration(500).start();
-                        //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                while (model5.getLife() > 0 && model2.getLife() > 0) {
+                    //anim attaque A2
+                    ObjectAnimator.ofFloat(gif6, "translationX", 0, 350).setDuration(500).start();
+                    // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ObjectAnimator.ofFloat(gif6, "translationX", 350, 0).setDuration(500).start();
+                            //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                        }
+                    }, SPLASH_TIME_OUT);
+
+                    int newlife = model5.getLife() - model2.getAttaque();
+                    model5.setLife(newlife);
+                    e.setText(String.valueOf(newlife));
+                    //si adv meurt tombe
+                    if (model5.getLife() <= 0) {
+
+                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif7);
+                        gif7.getLayoutParams().width = 130;
+                        gif7.getLayoutParams().width = 130;
                     }
-                }, SPLASH_TIME_OUT);
-
-                int newlife = model5.getLife() - model2.getAttaque();
-                model5.setLife(newlife);
-                e.setText(String.valueOf(newlife));
-                //si adv meurt tombe
-                if (model5.getLife() <= 0) {
-
-                    Glide.with(Combat.this).load(R.drawable.tombe).into(gif7);
-                    gif7.getLayoutParams().width = 130;
-                    gif7.getLayoutParams().width = 130;
                 }
 
                 //sinon il attaque
@@ -212,26 +214,27 @@ public class Combat extends AppCompatActivity {
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                while (model6.getLife() > 0 && model3.getLife() > 0) {
+                    ObjectAnimator.ofFloat(gif8, "translationX", 0, 750).setDuration(500).start();
+                    // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ObjectAnimator.ofFloat(gif8, "translationX", 750, 0).setDuration(500).start();
+                            //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                        }
+                    }, SPLASH_TIME_OUT);
 
-                ObjectAnimator.ofFloat(gif8, "translationX", 0, 750).setDuration(500).start();
-                // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        ObjectAnimator.ofFloat(gif8, "translationX", 750, 0).setDuration(500).start();
-                        //    ObjectAnimator.ofFloat(gif4,"translationY",20,0).setDuration(200).start();
+                    int newlife = model6.getLife() - model3.getAttaque();
+                    model6.setLife(newlife);
+                    f.setText(String.valueOf(newlife));
+
+                    if (model6.getLife() <= 0) {
+
+                        Glide.with(Combat.this).load(R.drawable.tombe).into(gif9);
+                        gif9.getLayoutParams().width = 130;
+                        gif9.getLayoutParams().width = 130;
                     }
-                }, SPLASH_TIME_OUT);
-
-                int newlife = model6.getLife() - model3.getAttaque();
-                model6.setLife(newlife);
-                f.setText(String.valueOf(newlife));
-
-                if (model6.getLife() <= 0) {
-
-                    Glide.with(Combat.this).load(R.drawable.tombe).into(gif9);
-                    gif9.getLayoutParams().width = 130;
-                    gif9.getLayoutParams().width = 130;
                 }
                 if (model6.getLife() > 0 && model3.getLife() > 0) {
 

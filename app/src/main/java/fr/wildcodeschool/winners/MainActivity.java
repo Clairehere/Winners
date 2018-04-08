@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                                         final Animation zoomAnimation1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.zoom);
                                         zoom1.startAnimation(zoomAnimation1);
 
-                                        ObjectAnimator.ofFloat(zoom, "translationY", 0, 300).setDuration(900).start();
+                                        ObjectAnimator.ofFloat(zoom, "translationY", 0, 200).setDuration(900).start();
 
 
                                         //Initialisation parcelable
