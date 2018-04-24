@@ -107,7 +107,7 @@ public class Combat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                while (model1.getLife() > 0 && model4.getLife() > 0) {
+                if (model1.getLife() > 0 && model4.getLife() > 0) {
                     //anim combat joueur 1
                     ObjectAnimator.ofFloat(gif4, "translationX", 0, 750).setDuration(400).start();
                     new Handler().postDelayed(new Runnable() {
@@ -160,7 +160,7 @@ public class Combat extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                while (model5.getLife() > 0 && model2.getLife() > 0) {
+                if (model5.getLife() > 0 && model2.getLife() > 0) {
                     //anim attaque joueur 1 heros 2
                     ObjectAnimator.ofFloat(gif6, "translationX", 0, 350).setDuration(500).start();
                     // ObjectAnimator.ofFloat(gif4,"translationY",0,600).setDuration(800).start();
@@ -213,7 +213,7 @@ public class Combat extends AppCompatActivity {
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                while (model6.getLife() > 0 && model3.getLife() > 0) {
+                if (model6.getLife() > 0 && model3.getLife() > 0) {
 
                     // anim attaque joueur 1 heros 3
                     ObjectAnimator.ofFloat(gif8, "translationX", 0, 750).setDuration(500).start();
